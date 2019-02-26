@@ -51,12 +51,12 @@ let wordInsert = document.getElementById("word");
 let livesInsert = document.getElementById("lives");
 let incorrectInsert = document.getElementById("incorrect-letters");
 let infoInsert = document.getElementById("info");
-let currentWord = chooseRandomWord(wordChoices);
-let currentWordArray = stringToArray(currentWord);
+let currentWord;
+let currentWordArray;
 let guessedLetters = [];
-let numberOfLives = 5;
-let lettersToGuess = 0;
-let isGameOver = false;
+let numberOfLives;
+let lettersToGuess;
+let isGameOver;
 
 function chooseRandomWord(choices) {
     return choices[Math.floor(Math.random() * choices.length)];
@@ -174,7 +174,7 @@ initializeGame();
 document.onkeyup = function (event) {
     let userGuess = event.key;
     console.log(userGuess);
-    if (isLetter(userGuess) && !alreadyGuessed(userGuess)) {
+    if (isLetter(userGuess) && !alreadyGuessed(userGuess) && !isGameOver) {
         guessedLetters.push(userGuess);
         console.log(guessedLetters);
         if (isInWord(userGuess, currentWordArray)) {
@@ -190,7 +190,7 @@ document.onkeyup = function (event) {
             }
         }
     } else if (isGameOver) {
-        if (userGuess = " ") {
+        if (userGuess === " ") {
             initializeGame();
         }
     }
