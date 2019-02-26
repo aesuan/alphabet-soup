@@ -51,11 +51,20 @@ let wordInsert = document.getElementById("word");
 let livesInsert = document.getElementById("lives");
 let incorrectInsert = document.getElementById("incorrect-letters");
 let infoInsert = document.getElementById("info");
+let currentWord = chooseRandomWord(wordChoices);
+let currentWordArray = stringToArray(currentWord);
+let guessedLetters = [];
 let numberOfLives = 5;
-let lettersToGuess=0;
+let lettersToGuess = 0;
+let isGameOver = false;
+
+function chooseRandomWord(choices) {
+    return choices[Math.floor(Math.random() * choices.length)];
+}
+
 
 function isLetter(input) {
-    for (let i = 0, arrayLength = alphabet.length; i < arrayLength; i++) {
+    for (let i = 0, alphabetLength = alphabet.length; i < alphabetLength; i++) {
         if (input.toLowerCase() === alphabet[i].letter) {
             return true;
         }
@@ -101,6 +110,7 @@ function isInWord(guess, wordArray) {
             wordArray[i].wasGuessed = true;
             inArray = true;
             lettersToGuess--;
+            console.log(lettersToGuess);
         }
     }
     return inArray;
@@ -121,38 +131,67 @@ function printWord(wordArray) {
     }
 }
 
-function gameOver() {
-    if (numberOfLives===0) {
-        infoInsert.textContent = "You Lose!";
+function alreadyGuessed(char) {
+    if (guessedLetters.indexOf(char) > -1) {
+        return true;
     } else {
-        infoInsert.textContet = "You Win!";
+        return false;
     }
 }
 
-let currentWord = wordChoices[Math.floor(Math.random() * wordChoices.length)];
-let currentWordArray = stringToArray(currentWord);
-let guessedLetters = [];
-lettersToGuess = currentWord.length;
-printWord(currentWordArray);
-console.log(currentWord);
+
+function gameOver() {
+    if (numberOfLives === 0) {
+        console.log("you lose");
+        infoInsert.textContent = "You Lose!";
+    } else {
+        console.log("you win");
+        infoInsert.textContent = "You Win!";
+    }
+    infoInsert.appendChild(document.createTextNode(" Press space to play again."));
+    // infoInsert.textContent += "  Press space to play again."
+    isGameOver = true;
+}
+
+function initializeGame() {
+    currentWord = chooseRandomWord(wordChoices);
+    currentWordArray = stringToArray(currentWord);
+    guessedLetters = [];
+    numberOfLives = 5;
+    lettersToGuess = 0;
+    isGameOver = false;
+    lettersToGuess = currentWord.length;
+    printWord(currentWordArray);
+    livesInsert.textContent = numberOfLives;
+    infoInsert.textContent = "";
+    incorrectInsert.textContent = "";
+    console.log(currentWord);
+}
 
 
-document.onkeyup = function(event) {
+initializeGame();
+
+document.onkeyup = function (event) {
     let userGuess = event.key;
     console.log(userGuess);
-    if (isLetter(userGuess)) {
-        
+    if (isLetter(userGuess) && !alreadyGuessed(userGuess)) {
         guessedLetters.push(userGuess);
-        if (isInWord(userGuess, currentWordArray)) { 
+        console.log(guessedLetters);
+        if (isInWord(userGuess, currentWordArray)) {
             printWord(currentWordArray);
-            if (lettersToGuess===0) {
+            if (lettersToGuess === 0) {
                 gameOver();
             }
         } else {
+            incorrectInsert.textContent += userGuess;
             livesInsert.textContent = --numberOfLives;
-            if (lives===0) {
+            if (numberOfLives === 0) {
                 gameOver();
             }
+        }
+    } else if (isGameOver) {
+        if (userGuess = " ") {
+            initializeGame();
         }
     }
 }
