@@ -1,0 +1,37 @@
+body {
+    background-image: url(./cloth.jpg);
+}
+
+#soup {
+    width: 800px;
+    position: relative;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.soup-bowl {
+    position: relative;
+    
+}
+
+.thisWord {
+}
+
+
+.napkin-spoon {
+    z-index: 1;
+}
+
+.wordList {
+    width: 400px;
+    position: absolute;
+    left: 40px;
+    top: 230px;
+    display: flex;
+    justify-content: center;
+}
+
+.letter {
+    width: 50px;
+    z-index: 100;
+}

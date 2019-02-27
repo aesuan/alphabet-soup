@@ -119,6 +119,14 @@ function isInWord(guess, wordArray) {
 // let thisArray = stringToArray(wordChoices[2]);
 // thisArray[0].wasGuessed = true;
 
+function typeSoup
+
+function typeLetter(char) {
+    if (isLetter(char)) {
+        
+    }
+}
+
 function printWord(wordArray) {
     wordInsert.textContent = "";
     for (let i = 0, wordLength = wordArray.length; i < wordLength; i++) {
@@ -167,6 +175,8 @@ function initializeGame() {
     incorrectInsert.textContent = "";
     console.log(currentWord);
 }
+
+
 
 
 initializeGame();
