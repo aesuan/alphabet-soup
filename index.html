@@ -14,22 +14,28 @@
     <div id="soup">
         <img class="soup-bowl" src="./assets/images/soup-bowl.png">
         <img class="napkin-napkin" src="./assets/images/spoon-napkin.png">
-
-        <ol class="wordList">
-            <li><img class="letter" src="./assets/images/soup_01.png"></li>
-            <li><img class="letter" src="./assets/images/soup_02.png"></li>
-            <li><img class="letter" src="./assets/images/soup_03.png"></li>
-            <li><img class="letter" src="./assets/images/soup_04.png"></li>
-            <li><img class="letter" src="./assets/images/soup_05.png"></li> 
-            <li><img class="letter" src="./assets/images/soup_06.png"></li>
-            <li><img class="letter" src="./assets/images/soup_07.png"></li>
-
+        <ol id="word-display">
+            <li class="letter" id="soup-letter-0"></li>
+            <li class="letter" id="soup-letter-1"></li>
+            <li class="letter" id="soup-letter-2"></li>
+            <li class="letter" id="soup-letter-3"></li>
+            <li class="letter" id="soup-letter-4"></li> 
+            <li class="letter" id="soup-letter-5"></li>
+            <li class="letter" id="soup-letter-6"></li>
+            <li class="letter" id="soup-letter-7"></li>
         </ol>
 
         <!--<span id="word"></span>-->
 
     </div>
-    <div><span id="incorrect-letters"></span></div>
+    <ol class="incorrect-letters">
+        <li class="letter regular-letter-0"></li>
+        <li class="letter regular-letter-1"></li>
+        <li class="letter regular-letter-2"></li>
+        <li class="letter regular-letter-3"></li>
+        <li class="letter regular-letter-4"></li>
+        <li class="letter regular-letter-5"></li>
+    </ol>
     <div><span id="lives"></span></div>
     <div><span id="info"></span></div>
     <script type="text/javascript" src="./assets/javascript/game.js"></script>
