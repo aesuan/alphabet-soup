@@ -47,9 +47,9 @@ let wordChoices = [
     "soup",
 ]
 
-let wordInsert = document.getElementById("word-display");
+//let wordInsert = document.getElementById("word-display");
 let livesInsert = document.getElementById("lives");
-let incorrectInsert = document.getElementById("incorrect-letters");
+//let incorrectInsert = document.getElementById("incorrect-letters");
 let infoInsert = document.getElementById("info");
 let currentWord;
 let currentWordArray;
@@ -110,7 +110,7 @@ function isInWord(guess, wordArray) {
             wordArray[i].wasGuessed = true;
             inArray = true;
             lettersToGuess--;
-            console.log(lettersToGuess);
+            console.log("Letters to Guess: " + lettersToGuess);
         }
     }
     return inArray;
@@ -127,30 +127,39 @@ function isInWord(guess, wordArray) {
 //     }
 // }
 
-function printWord(wordArray) {
-    wordInsert.textContent = "";
-    for (let i = 0, wordLength = wordArray.length; i < wordLength; i++) {
-        let item = wordArray[i];
-        if (item.wasGuessed) {
-            wordInsert.appendChild(document.createTextNode(item.character + " "));
-        } else {
-            wordInsert.appendChild(document.createTextNode("- "));
-        }
-    }
-}
+// function printWord(wordArray) {
+//     wordInsert.textContent = "";
+//     for (let i = 0, wordLength = wordArray.length; i < wordLength; i++) {
+//         let item = wordArray[i];
+//         if (item.wasGuessed) {
+//             wordInsert.appendChild(document.createTextNode(item.character + " "));
+//         } else {
+//             wordInsert.appendChild(document.createTextNode("- "));
+//         }
+//     }
+// }
 
 function printSoupWord(wordArray) {
-    for (i=0, wordLength = wordArray.length; i<wordLength; i++) {
-        let letterInsert = document.getElementById("soup-letter-" + i);
+    let letterInsert = document.getElementById("word-display");
+    letterInsert.innerHTML = "";
+    for (let i=0, wordLength = wordArray.length; i<wordLength; i++) {
+        
         let char = wordArray[i].character;
-        let imageType = ""
+        let imageType = "";
         if (wordArray[i].wasGuessed) {
             imageType = char;
         } else {
             imageType = "blank";
         }
-        letterInsert.innerHTML='<img class="printed-letter" alt="' + imageType + '" src="./assets/images/soup_' + imageType + '.png">';
+        let image='<img class="letter printed-letter" alt="' + imageType + '" src="./assets/images/soup_' + imageType + '.png">';
+        letterInsert.innerHTML+= image;
     }
+}
+
+function addIncorrectLetter(char) {
+    let incorrectLetterInsert = document.getElementById("incorrect-letters");
+    let image = '<img class="letter incorrect-letter" alt="' + char + '" src="./assets/images/regular_' + char + '.png">';
+    incorrectLetterInsert.innerHTML += image;
 }
 
 function alreadyGuessed(char) {
@@ -161,12 +170,22 @@ function alreadyGuessed(char) {
     }
 }
 
-function clearWords() {
-    let letterList = document.getElementsByClassName("letter");
-    for (let i=0, listLength=letterList.length; i<listLength; i++) {
-        letterList[i].innerHTML = "";
+//this is for pre-made lists where you inner-html images into the item
+// function clearLetters() {
+//     let letterList = document.getElementsByClassName("letter");
+//     console.log(listLength=letterList.length);
+//     for (let i=0, listLength=letterList.length; i<listLength; i++) {
+//         letterList[i].innerHTML = "";
+//     }
+//     // let letterInsert = document.getElementById("soup-letter-" + i);
+// }
+
+function clearLetters() {
+    let letterSections = document.getElementsByClassName("letter-insert");
+    for (let i=0, listLength=letterSections.length; i<listLength; i++) {
+        letterSections[i].innerHTML = "";
     }
-    // let letterInsert = document.getElementById("soup-letter-" + i);
+
 }
 
 function gameOver() {
@@ -190,12 +209,12 @@ function initializeGame() {
     lettersToGuess = 0;
     isGameOver = false;
     lettersToGuess = currentWord.length;
-    clearWords();
+    clearLetters();
     printSoupWord(currentWordArray);
     //livesInsert.textContent = numberOfLives;
     infoInsert.textContent = "";
     //incorrectInsert.textContent = "";
-    console.log(currentWord);
+    console.log("Current Word: " + currentWord);
 }
 
 
@@ -205,10 +224,10 @@ initializeGame();
 
 document.onkeyup = function (event) {
     let userGuess = event.key;
-    console.log(userGuess);
+    console.log("User Guess: " + userGuess);
     if (isLetter(userGuess) && !alreadyGuessed(userGuess) && !isGameOver) {
         guessedLetters.push(userGuess);
-        console.log(guessedLetters);
+        console.log("Guessed Letters: " + guessedLetters);
         if (isInWord(userGuess, currentWordArray)) {
             printSoupWord(currentWordArray);
             if (lettersToGuess === 0) {
@@ -216,6 +235,8 @@ document.onkeyup = function (event) {
             }
         } else {
             --numberOfLives;
+            console.log("Lives: " + numberOfLives);
+            addIncorrectLetter(userGuess);
             //incorrectInsert.textContent += userGuess;
             //livesInsert.textContent = numberOfLives;
             if (numberOfLives === 0) {
@@ -224,8 +245,7 @@ document.onkeyup = function (event) {
         }
     } else if (isGameOver) {
         if (userGuess === " ") {
-            initializeGame();
-            
+            initializeGame();          
         }
     }
 }
