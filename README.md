@@ -22,3 +22,5 @@ do words with spaces/characters
 dynamically resize text based on number of letters so can do longer words
 
 finish editing the soup letters so they look cleaner
+
+originally i did a lot of the styling with absolute rather than relative margins heights etc would be better to convert to percentage

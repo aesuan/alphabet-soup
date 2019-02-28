@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Word Guess Game</title>
+    <link rel="icon" href="./assets/images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
@@ -13,10 +14,12 @@
 <body>
     <div id="meal">
         <section id="receipt-and-tallies">
-        <img id="receipt" alt="receipt" src="./assets/images/receipt-normal.png">
-    </section>
-        
-        <div id ="soup">
+            <img id="receipt" alt="receipt" src="./assets/images/receipt-normal.png">
+            <p class="tallies" id="lives"></p>
+            <p class="tallies" id="games-won"></p>
+        </section>
+
+        <div id="soup">
             <img class="soup-bowl" src="./assets/images/soup-bowl.png">
             <section class="letter-insert" id="word-display">
                 <img class="letter soup-letter starting" alt="P" src="./assets/images/soup_p.png">
@@ -32,10 +35,10 @@
             </section>
         </div>
         <div id="spoon-napkin-incorrect-letters">
-        <img class="spoon-napkin" src="./assets/images/spoon-napkin.png">
-        <section class="letter-insert" id="incorrect-letters-display">
-        </section>
-    </div>
+            <img class="spoon-napkin" src="./assets/images/spoon-napkin.png">
+            <section class="letter-insert" id="incorrect-letters-display">
+            </section>
+        </div>
     </div>
 
     <script type="text/javascript" src="./assets/javascript/game.js"></script>

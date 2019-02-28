@@ -18,29 +18,47 @@ body {
 
 #receipt-and-tallies {
     align-self: flex-end;
+    position: relative;
 }
 
 #receipt { 
     height: 300px;
-    position: relative;
+    display: block;
 }
+
+.tallies {
+    font-family: "Merchant Copy Wide";
+    transform: skew(20deg, -26deg);
+    -webkit-transform: skew(20deg, -26deg);
+    -moz-transform: skew(20deg, -26deg);
+}
+
+#lives {
+    position: absolute;
+    right: 34%;
+    bottom: 64%;
+}
+
+#games-won {
+    position: absolute;
+    right: 31%;
+    bottom: 58%;
+}
+
 
 #soup {
     position: relative;
-
 }
 
-/* .soup-bowl {
-    position: relative;  
-} */
-
-
+ .soup-bowl {
+    display: block; 
+} 
 
 #word-display {
     width: 400px;
     position: absolute;
-    left: 40px;
-    top: 215px;
+    left: 8%;
+    top: 43%;
     display: flex;
     justify-content: center;
 }
@@ -67,6 +85,7 @@ body {
 
 .spoon-napkin {
     margin-left: 25px;
+    display: block;
 }
 
 #incorrect-letters-display {

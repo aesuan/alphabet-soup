@@ -137,13 +137,27 @@ function gameOver() {
         document.getElementById("receipt").src = receipt.src.replace("-normal", "-lose");
     } else {
         console.log("you win");
+        numberOfWins++;
         document.getElementById("receipt").src = receipt.src.replace("-normal", "-win");
     }
+    gamesPlayed++;
+    printWins();
     isGameOver = true;
 }
 
+function printLives() {
+    console.log("printlives");
+    let livesInsert = document.getElementById("lives");
+     livesInsert.textContent = numberOfLives + "/5";
+}
+
+function printWins() {
+    console.log("printwins");
+    let winsInsert = document.getElementById("games-won");
+    winsInsert.textContent = numberOfWins + "/" + gamesPlayed;
+}
+
 function initializeGame() {
-    gamesPlayed++;
     numberOfLives = 5;
     guessedLetters = [];
     lettersToGuess = 0;
@@ -154,6 +168,8 @@ function initializeGame() {
     document.getElementById("receipt").src = "./assets/images/receipt-normal.png";
     clearLetters();
     printSoupWord(currentWordArray);
+    printLives();
+    printWins();
     console.log("Current Word: " + currentWord);
 }
 
