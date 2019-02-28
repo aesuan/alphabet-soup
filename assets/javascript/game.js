@@ -35,7 +35,13 @@ let wordChoices = [
     "spaghetti",
     "omelette",
     "sundae",
-    ""
+    "banana",
+    "sandwich",
+    "avocado",
+    "quiche",
+    "oatmeal",
+    "potato",
+    "falafel"
 ]
 
 let currentWord;
