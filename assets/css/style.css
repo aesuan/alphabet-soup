@@ -1,38 +1,104 @@
+@font-face {
+    font-family: CustomFont;
+    src: url('./merchant-copy/Merchant-Copy-Wide.ttf');
+}
+
 body {
     background-image: url(./cloth.jpg);
 }
 
-#soup {
-    width: 800px;
+#meal {
+    width: 90%;
     position: relative;
     margin: auto;
     margin-top: 100px;
+    display: flex;
+    align-content: center;
 }
 
-.soup-bowl {
+#receipt-and-tallies {
+    align-self: flex-end;
+}
+
+#receipt { 
+    height: 300px;
     position: relative;
-    
 }
 
-.thisWord {
+#soup {
+    position: relative;
+
 }
 
+/* .soup-bowl {
+    position: relative;  
+} */
 
-.napkin-spoon {
-    z-index: 1;
-}
+
 
 #word-display {
     width: 400px;
     position: absolute;
     left: 40px;
-    top: 230px;
+    top: 215px;
     display: flex;
     justify-content: center;
 }
 
-.printed-letter {
+.soup-letter {
     width: 45px;
     height: 60px;
     z-index: 100;
 }
+
+.space-right {
+    margin-right: 20px;
+}
+
+.starting {
+    width: 36px;
+    height: 48px;
+}
+
+.spoon-napkin-incorrect-letters {   
+    position: relative;
+    display: flex;  
+} 
+
+.spoon-napkin {
+    margin-left: 25px;
+}
+
+#incorrect-letters-display {
+    width: 205px;
+    top: 60px;
+    left: 850px;
+    position: absolute;
+    /* margin: auto; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    
+}
+
+.incorrect-letter {
+    height: 70px;
+    z-index: 100;
+    /* position: absolute; */
+}
+
+.incorrect-letter:nth-of-type(odd) {
+    align-self: flex-end;
+}
+
+/* .incorrect-letter:nth-of-type(3n) {
+    justify-content: space-between;
+} */
+
+/* @media screen and (max-width: 900px) {
+    #meal {width: 90%;}
+} */
+
+
+
