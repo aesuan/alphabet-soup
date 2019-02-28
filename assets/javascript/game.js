@@ -183,6 +183,7 @@ document.onkeyup = function (event) {
             }
         } else {
             --numberOfLives;
+            printLives();
             addIncorrectGuess(userGuess);
             if (numberOfLives === 0) {
                 gameOver();
