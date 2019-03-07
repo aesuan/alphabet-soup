@@ -1,5 +1,5 @@
 @font-face {
-    font-family: CustomFont;
+    font-family: "Merchant Copy Wide";
     src: url('./merchant-copy/Merchant-Copy-Wide.ttf');
 }
 
@@ -27,7 +27,7 @@ body {
 }
 
 .tallies {
-    font-family: "Merchant Copy Wide";
+    font-family: "Merchant Copy Wide", monospace;
     transform: skew(20deg, -26deg);
     -webkit-transform: skew(20deg, -26deg);
     -moz-transform: skew(20deg, -26deg);
